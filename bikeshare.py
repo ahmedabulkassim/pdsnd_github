@@ -229,6 +229,7 @@ def user_stats(df,_filter):
 
 
 def main():
+    """gets input from the user and displays statistics based on the user's input."""
     while True:
         city, month, day,_filter = get_filters()
         df = load_data(city, month, day)
