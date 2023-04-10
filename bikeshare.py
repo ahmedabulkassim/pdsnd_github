@@ -10,26 +10,24 @@ def get_month():
     
     # this function get the month filter from the user, it has no arguments
     
-    months = ["January","February","March","April","May","June","July"]
-    month=""
-    while(month not in months):
+    while True:
         month = input("Which month? January, February, March, April, May, or June?\n").title()
-        if month not in months:
-            print("Please enter a valid month!\n") 
-    return month
+        if month in ["January", "February", "March", "April", "May", "June"]:
+            return month
+        print("Please enter a valid month!\n")
 def get_day():
-        # this function get the day filter from the user, its has no arguments
-    days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    day=""
-    while(day not in range(1,8)):
+    """
+    Gets the day filter from the user.
+    """
+    while True:
         try:
-            day = int(input("Which day? Please type your response as an integer (e.g.. 1=Sunday).\n"))
-            if day not in range(1,8):
-                print("Please enter valid day!\n")
+            day = int(input("Which day? Please type your response as an integer (e.g. 1=Sunday).\n"))
+            if day in range(1, 8):
+                return ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][day - 1]
+            else:
+                print("Please enter a valid day")
         except ValueError:
-                print("That was not a valid integer. Please try again.")
-    day = days[day-1]
-    return day
+            print("Please enter a valid integer.")
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -96,16 +94,12 @@ def load_data(city, month, day):
     # filter by month if applicable
     if month != 'all':
         # use the index of the months list to get the corresponding int
-        #months = ['january', 'february', 'march', 'april', 'may', 'june']
-        #month = months.index(month.lower())+1
     
         # filter by month to create the new dataframe
         df = df[df["month"] == month.title()]
     # filter by day of week if applicable
     if day != 'all':
         # filter by day of week to create the new dataframe
-        #days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday']
-        #day = days.index(day.title())
         df = df[df["day_of_week"] == day.title()]
 
     return df
