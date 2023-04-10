@@ -17,8 +17,10 @@ The output of the project provides you with following information:
 - chicago.csv
 - new_york_city.csv
 - washington.csv
+- README.md
 
 ### Credits
+
 - [Udacity](https://learn.udacity.com/)
 - [Citi bike](https://citibikenyc.com/)
 - [Stack Overflow](https://stackoverflow.com/)
